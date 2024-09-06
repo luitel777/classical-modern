@@ -1,0 +1,21 @@
+<article>
+	<h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+	{{ range .Params.tags }}
+	<a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+	{{ end }}
+
+
+	<div class="summary">
+		{{ site.Params.author.name }} | words: {{ .WordCount }} | {{ div .WordCount 200}} minutes |
+		<time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+	</div>
+
+
+	<div>
+		{{/* .Description */}}
+		{{ .Summary }}
+		{{ if .Truncated }}
+		<a href="{{ .Permalink }}">Read more...</a>
+		{{ end }}
+	</div>
+</article>

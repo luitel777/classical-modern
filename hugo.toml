@@ -1,0 +1,25 @@
+baseURL = 'https://example.com'
+languageCode = 'en-us'
+title = 'Classic Modern'
+pagination.pagerSize=8
+
+# contact to /content/about.md
+# writing to /content/writings/*.md
+# thoughts to /content/thoughts/*.md
+[params]
+  HomeSummaryPath = "content/summary.md"
+  mainSections = ["writings"]
+  thoughtSections = ["thoughts"]
+  [params.author]
+    name = "John Doe"
+
+[services]
+  [services.rss]
+    limit = -1
+
+
+[markup]
+  [markup.highlight]
+    linenos = true
+    style = 'modus-vivendi'
+    tabWidth = 4

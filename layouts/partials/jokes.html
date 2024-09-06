@@ -1,0 +1,20 @@
+{{ $data := dict }}
+
+{{ $path := "jokes.json" }}
+{{ with resources.Get $path }}
+{{ with . | transform.Unmarshal }}
+{{ $data = . }}
+{{ end }}
+{{ else }}
+{{ errorf "Unable to get global resource %q" $path }}
+{{ end }}
+
+
+{{ $randomNumber := math.Rand | mul (sub ($data | len) 1) | math.Floor }}
+
+{{ $firstJoke := index $data (int $randomNumber) }}
+{{ with $firstJoke }}
+<blockquote>
+  {{ .joke }}
+</blockquote>
+{{ end }}

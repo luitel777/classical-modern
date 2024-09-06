@@ -1,0 +1,54 @@
+{{/* this is .md render */}}
+
+
+{{ define "main" }}
+<link rel="stylesheet" href="/css/single.css">
+
+{{/* .Render "nav" */}}
+{{ .Render "nav" }}
+<main>
+  <article>
+
+    <div class="single_main">
+      <div class="single_heading">
+        <h1>{{ .Title }}</h1>
+        {{ site.Params.author.name }} | words: {{ .WordCount }} | {{ div .WordCount 200}} minutes |
+        <time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        <hr>
+      </div>
+      <div>
+        {{ .Content }}
+      </div>
+    </div>
+
+
+    {{ if .Params.toc }}
+    <script src="/js/single_toc.js"></script>
+
+    <div class="single_toc">
+      <details open>
+        <summary>Outline</summary>
+        <aside>
+          {{ .TableOfContents }}
+        </aside>
+      </details>
+      {{ end }}
+    </div>
+
+    {{ with .Params.tags }}
+    <div>
+      <ul id="tags">
+        {{ range . }}
+        <li><a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+  </article>
+
+  {{ partial "jokes.html" . }}
+
+</main>
+{{ partial "sidebar.html" . }}
+{{ end }}

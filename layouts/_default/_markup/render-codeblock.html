@@ -1,0 +1,29 @@
+<!-- <div class="custom_code_block_title"> -->
+  <!-- <button class=code_copy_block onclick="copy()"> -->
+    <!-- COPY CODE -->
+  <!-- </button> -->
+<!-- </div> -->
+{{ $result := transform.HighlightCodeBlock . }}
+{{ $result.Wrapped }}
+
+<script>
+function copy(){
+}
+</script>
+
+<style>
+  .custom_code_block_title{    
+    background-color: var(--text);
+    color: var(--background-color);
+  }
+  .code_copy_block {
+    background-color: var(--text);
+    color: var(--background-color);
+    margin-left: 80%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+  }
+</style>
