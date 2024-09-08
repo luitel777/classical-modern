@@ -14,6 +14,14 @@
         <h1>{{ .Title }}</h1>
         {{ site.Params.author.name }} | words: {{ .WordCount }} | {{ div .WordCount 200}} minutes |
         <time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        {{ with .Params.tags }}
+        <div>
+          {{ range . }}
+          <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+
         <hr>
       </div>
       <div>
@@ -34,16 +42,6 @@
       </details>
       {{ end }}
     </div>
-
-    {{ with .Params.tags }}
-    <div>
-      <ul id="tags">
-        {{ range . }}
-        <li><a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-        {{ end }}
-      </ul>
-    </div>
-    {{ end }}
 
   </article>
 

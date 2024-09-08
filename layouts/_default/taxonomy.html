@@ -1,6 +1,5 @@
 
 {{ define "main" }}
-<link rel="stylesheet" href="/css/single.css">
 <link rel="stylesheet" href="/css/style.css">
 
 <main class="index">
@@ -9,6 +8,13 @@
   {{ .Content }}
   {{ range .Pages }}
   <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+
+		{{ .Summary | truncate 100}}
+		{{ if .Truncated }}
+		<a href="{{ .Permalink }}">Read more...</a>
+		{{ end }}
+
+
   {{ end }}
 </main>
 
