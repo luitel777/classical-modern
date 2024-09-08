@@ -70,14 +70,9 @@ td {
   padding-right: 10px;
 }
 
-article a {
-  color: var(--title_1);
-}
-
 /* this is title links of homepage */
 .index h1 a {
   font-size: 1.2em;
-  color: var(--title_1);
   /* how https://codepen.io/t_afif/pen/XWNQZJa */
   background: linear-gradient(currentColor 0 0) var(--p, -101%) 100% /50% 3px no-repeat,
     linear-gradient(90deg, currentColor 50%, transparent 0) bottom /var(--d, 0) 3px no-repeat;
@@ -263,6 +258,3 @@ mark.scroll-highlight {
 
 }
 
-article a {
-  color: var(--link);
-}
