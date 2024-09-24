@@ -3,27 +3,31 @@
     <!-- COPY CODE -->
   <!-- </button> -->
 <!-- </div> -->
-{{ $result := transform.HighlightCodeBlock . }}
-{{ $result.Wrapped }}
-
-<script>
-function copy(){
-}
-</script>
 
 <style>
-  .custom_code_block_title{    
-    background-color: var(--text);
-    color: var(--background-color);
-  }
-  .code_copy_block {
-    background-color: var(--text);
-    color: var(--background-color);
-    margin-left: 80%;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    font: inherit;
-    outline: inherit;
-  }
+
+#highlight_render {
+    position: relative;
+    border: 1px solid var(--text);
+}
+
+#highlight_render::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-tint);
+    z-index: 1;
+    pointer-events: none;
+}
+
 </style>
+
+
+{{ $result := transform.HighlightCodeBlock . }}
+<div id="highlight_render">
+  {{ $result.Wrapped }}
+</div>
+
